@@ -13,6 +13,16 @@ RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - 
 	&& apt-get update \
   && apt-get install -y google-chrome-stable --no-install-recommends
 
+# install xvfb for Cypress
+RUN apt-get install -y \
+  libgtk2.0-0 \
+  libnotify-dev \
+  libgconf-2-4 \
+  libnss3 \
+  libxss1 \
+  libasound2 \
+  xvfb --no-install-recommends
+
 # install psql
 RUN curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
   && echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
